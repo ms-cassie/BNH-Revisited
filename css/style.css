@@ -4,13 +4,134 @@
 	padding: 0;
 }
 
-#game-results {
-	margin: 20px;
-	padding: 10px;
-	border: 2px solid #333;
-	border-radius: 5px;
-	background-color: #f9f9f9;
+body {
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+	background-color: whitesmoke;
+	color: #333;
+}
 
-	font-size: 1.5rem;
-	font-family:Verdana, Geneva, Tahoma, sans-serif;
+body::selection {
+	background-color: blueviolet;
+	color: white;
+}
+
+.content {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	max-width: 50%;
+	margin: 0 auto;
+	text-align: center;
+}
+
+#game,
+#round-over {
+	width: 50%;
+}
+
+#game ul {
+	text-align: left;
+}
+
+#game #center-ul {
+	display: flex;
+	justify-content: center;
+}
+
+#game h2 {
+	margin: 1rem 0;
+	color: blueviolet;
+}
+
+#game p {
+	margin-bottom: 2rem;
+}
+
+#game ul {
+	margin-bottom: 2rem;
+}
+
+#game hr {
+	width: 100%;
+	margin: 0.5rem 0;
+}
+
+#game #player-choices p {
+	margin: 1rem 0;
+}
+
+#game #player-choices {
+	display: flex;
+	justify-content: center;
+	gap: 1rem;
+}
+
+#round-over {
+	margin-top: 1rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+#results {
+	border: 2px solid rgb(50, 14, 85);
+	padding: 1rem;
+	background-color: blueviolet;
+	width: 75%;
+	border-radius: 0.5rem;
+	color: white;
+	box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+}
+
+#results::selection {
+	background-color: white;
+	color: blueviolet;
+}
+
+#results p {
+	margin: 1rem 0;
+	font-weight: bold;
+	font-size: 1.2rem;
+}
+
+#running-tally {
+	margin: 1rem 0;
+}
+
+#round-over hr {
+	margin: 0.5rem 0;
+	width: 100%;
+}
+
+/* UTILITIES */
+.hidden {
+	display: none;
+}
+
+.btn {
+	padding: 0.75rem 1.25rem;
+	font-size: 1rem;
+	cursor: pointer;
+	background-color: blueviolet;
+	border: 2px solid rgb(50, 14, 85);
+	color: white;
+	border-radius: 0.5rem;
+	font-weight: bold;
+	box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+}
+
+.btn::selection {
+	background-color: white;
+	color: blueviolet;
+}
+
+.btn:hover {
+	background-color: indigo;
+	transform: scale(1.1);
+}
+
+.btn:active {
+	background-color: blueviolet;
+	transform: scale(1);
 }

@@ -1,0 +1,193 @@
+// Set initial game state
+let playing = true;
+let playerWins = 0;
+let computerWins = 0;
+
+// Game choices
+const choices = ['bear', 'ninja', 'hunter'];
+
+// Get references to game html elements
+const buttonBear = document.getElementById('player-choice-bear');
+const buttonNinja = document.getElementById('player-choice-ninja');
+const buttonHunter = document.getElementById('player-choice-hunter');
+
+const playerChoice = document.getElementById('player-choice');
+const computerChoice = document.getElementById('computer-choice');
+const gameResult = document.getElementById('game-result');
+
+const playerWinCount = document.getElementById('player-win-count');
+const computerWinCount = document.getElementById('computer-win-count');
+const playAgainButton = document.getElementById('play-again');
+
+// Add event listeners to buttons
+buttonBear.addEventListener('click', () => playGame('bear'));;
+buttonNinja.addEventListener('click', () => playGame('ninja'));
+buttonHunter.addEventListener('click', () => playGame('hunter'));
+playAgainButton.addEventListener('click', resetGame);
+
+// Game functions
+const playGame = (playerChoice) => {
+
+};
+
+const resetGame = () => {
+
+};
+
+// Start while loop to play game
+do {
+	// Reset game variables
+	result = '';
+	playerChoice = '';
+	computerChoice = '';
+	playAgain = '';
+
+	// Get player name and alert welcome message
+	if (!playerName) {
+		// playerName = prompt("Welcome to Bear Hunter Ninja! Please enter your name to get started:");
+
+		// Validate input
+		if (playerName !== null && playerName.trim() !== '') {
+			playerName = playerName.trim();
+		} else if (playerName === null) {
+			result = 'cancel';
+			break;
+		} else if (playerName.trim() === '') {
+			result = 'invalid';
+			break;
+		}
+
+		// Input valid - display welcome message
+		alert(`Hi ${playerName} Let's play!!`);
+	}
+
+
+
+	// Generate random number to use for computer choice
+	const randomNum = Math.floor(Math.random() * 3);
+
+	// Iterate over choices to set computer choice
+	choices.forEach((choice, index) => {
+		if (index === randomNum) {
+			computerChoice = choice;
+		}
+	});
+
+	// Get player choice & set computer choice (force to lowercase)
+	// playerChoice = prompt("Who are you: Bear, Ninja, or Hunter?");
+
+	// Validate input
+	if (playerChoice !== null && choices.includes(playerChoice.toLowerCase())) {
+		playerChoice = playerChoice.toLowerCase();
+	} else if (playerChoice === null) {
+		// Player clicked cancel
+		result = 'cancel';
+		break;
+
+	} else {
+		// Invalid input
+		result = 'invalid';
+		break;
+	}
+
+	// Evaluate user choice based on game rules
+	// Bear beats Ninja, Ninja beats Hunter, and Hunter beats Bear
+	switch (playerChoice) {
+		case 'bear':
+			if (computerChoice === 'ninja') {
+				result = 'player';
+			} else if (computerChoice === 'hunter') {
+				result = 'computer';
+			} else if (computerChoice === 'bear') {
+				result = 'tie';
+			}
+
+			break;
+		case 'hunter':
+			if (computerChoice === 'bear') {
+				result = 'player';
+			} else if (computerChoice === 'ninja') {
+				result = 'computer';
+			} else if (computerChoice === 'hunter') {
+				result = 'tie';
+			}
+
+			break;
+		case 'ninja':
+			if (computerChoice === 'bear') {
+				result = 'computer';
+			} else if (computerChoice === 'hunter') {
+				result = 'player';
+			} else if (computerChoice === 'ninja') {
+				result = 'tie';
+			}
+
+			break;
+		default:
+			console.log('unkown choice made');
+	}
+
+	// Change output based on game result
+	if (result === 'player') {
+		alert(`${playerName}, You picked ${playerChoice}!\nThe computer picked ${computerChoice}!\nYou Win!!`);
+	} else if (result === 'computer') {
+		alert(`${playerName}, You picked ${playerChoice}!\nThe computer picked ${computerChoice}!\nComputer Wins!!`);
+	} else {
+		alert(`${playerName}, You picked ${playerChoice}!\nThe computer picked ${computerChoice}!\nTie!!`);
+	}
+
+	// Ask player to play again - force lowercase
+	// playAgain = prompt(`${playerName}, would you like to play again, Yes or No?`);
+
+	// Validate input
+	if (playAgain !== null &&
+		(playAgain.toLowerCase() === 'yes' ||
+			playAgain.toLowerCase() === 'y' ||
+			playAgain.toLowerCase() === 'no' ||
+			playAgain.toLowerCase() === 'n'
+		)) {
+		playAgain = playAgain.toLowerCase();
+	} else if (playAgain === null) {
+		// Player clicked cancel
+		result = 'cancel';
+		break;
+
+	} else {
+		// Invalid input
+		result = 'invalid';
+		break;
+	}
+
+} while (playAgain === 'yes' || playAgain === 'y');
+
+
+// Display results in webpage
+if (result === 'player') {
+	// Print the game output to the console
+	console.log(`${playerName}, You picked ${playerChoice}!`);
+	console.log(`The computer picked ${computerChoice}!`);
+
+	// Display results to the webpage
+	gameDialog.innerText = `${playerName}, You picked ${playerChoice}!\n\nThe computer picked ${computerChoice}!\n\nYou Win!!`;
+	console.log('You Win!!');
+} else if (result === 'computer') {
+	// Print the game output to the console
+	console.log(`${playerName}, You picked ${playerChoice}!`);
+	console.log(`The computer picked ${computerChoice}!`);
+
+	// Display results to the webpage
+	gameDialog.innerText = `${playerName}, You picked ${playerChoice}!\n\nThe computer picked ${computerChoice}!\n\nComputer Wins!!`;
+	console.log('Computer Wins!!');
+} else if (result === 'tie') {
+	// Print the game output to the console
+	console.log(`${playerName}, You picked ${playerChoice}!`);
+	console.log(`The computer picked ${computerChoice}!`);
+
+	// Display results to the webpage
+	gameDialog.innerText = `${playerName}, You picked ${playerChoice}!\n\nThe computer picked ${computerChoice}!\n\nTie!!`;
+	console.log('Tie!!');
+} else if (result === 'invalid') {
+	gameDialog.innerText = `Invalid Entry\nPlease Press F5 to Play Again.`;
+} else if (result === 'cancel') {
+	gameDialog.innerText = `Please Press F5 to Play Again.`;
+}
