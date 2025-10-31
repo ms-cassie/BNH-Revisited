@@ -1,0 +1,16 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+#game-results {
+	margin: 20px;
+	padding: 10px;
+	border: 2px solid #333;
+	border-radius: 5px;
+	background-color: #f9f9f9;
+
+	font-size: 1.5rem;
+	font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
