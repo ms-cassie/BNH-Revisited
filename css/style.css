@@ -93,6 +93,7 @@ body::selection {
 	margin: 1rem 0;
 	font-weight: bold;
 	font-size: 1.2rem;
+	text-align: left;
 }
 
 #running-tally {
@@ -106,7 +107,17 @@ body::selection {
 
 /* UTILITIES */
 .hidden {
-	display: none;
+	animation: shrinkToNothing 500ms forwards;
+}
+
+@keyframes shrinkToNothing {
+	from {
+		opacity: 1;
+	}
+	to {
+		opacity: 0;
+		display: none;
+	}
 }
 
 .btn {
